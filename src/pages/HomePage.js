@@ -1,8 +1,11 @@
 import React from 'react'
+import Title from '../components/Title'
 
 function HomePage() {
-  return (
-    <div>HomePage</div>
+  return (<>
+  <Title text={'Home Page'}/>
+  </>
+    
   )
 }
 

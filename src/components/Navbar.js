@@ -10,6 +10,7 @@ function Navbar() {
       position="static"
       sx={{
         // background: 'linear-gradient(25deg, #0a1e80,#a72ca8)',
+        background: 'black',
         mb: 1,
       }}
     >
@@ -45,7 +46,19 @@ function Navbar() {
               },
             }}
           >
-            Home
+            Shop
+          </Button>
+          <Button
+            href="/categories"
+            color="inherit"
+            sx={{
+              fontFamily: 'Rubik',
+              ':hover': {
+                color: 'lime',
+              },
+            }}
+          >
+            Categories
           </Button>
           <Button
             href="/contact"
@@ -81,8 +94,7 @@ function Navbar() {
               },
             }}
           >
-            <ShoppingCartIcon sx={{mr: 1}}/>
-            Cart
+            <ShoppingCartIcon sx={{ mr: 2 }} />
           </Button>
         </Stack>
       </Toolbar>
