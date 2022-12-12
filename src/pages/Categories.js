@@ -3,6 +3,8 @@ import Title from '../components/Title';
 import { categories } from '../data';
 import { products } from '../data';
 import { Box } from '@mui/system';
+import { Button } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 function Categories() {
   const [brand, setBrand] = useState('');
@@ -50,10 +52,35 @@ function Categories() {
         }}
       >
         {prodList.map((item) => (
-          <Box>
+          <Box
+            sx={{
+              border: 2,
+              borderRadius: 3,
+              p: 1,
+              m: 1,
+            }}
+          >
             {item.title}
             <br />
-            <img src={item.img} width={50} />
+            <img
+              src={item.img}
+              width={100}
+              height={100}
+              style={{ objectFit: 'cover' }}
+            />
+            <br />
+            <Button
+              variant="contained"
+              sx={{
+                background: 'black',
+                ':hover': {
+                  color: 'lime',
+                  background: 'black',
+                },
+              }}
+            >
+              <AddShoppingCartIcon />
+            </Button>
           </Box>
         ))}
       </Box>
