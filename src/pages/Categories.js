@@ -3,21 +3,24 @@ import Title from '../components/Title';
 import { categories } from '../data';
 import { products } from '../data';
 import { Box } from '@mui/system';
-import { Button } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 function Categories() {
-  const [brand, setBrand] = useState('');
+  const [brand, setBrand] = useState('showAll');
   const [prodList, setProdList] = useState([]);
 
   useEffect(() => {
-    setProdList(products.filter((product) => product.brand === brand));
+    brand === 'showAll'
+      ? setProdList(products)
+      : setProdList(products.filter((product) => product.brand === brand));
   }, [brand]);
 
   return (
     <>
       <Title text={'Categories'} />
-      <Box
+      <Grid
+        container
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -26,7 +29,8 @@ function Categories() {
         }}
       >
         {categories.map((item) => (
-          <Box
+          <Grid
+            item
             sx={{
               border: 2,
               borderRadius: 3,
@@ -36,39 +40,58 @@ function Categories() {
               background: 'white',
             }}
           >
-            <img
-              src={item.img}
-              width={200}
-              onClick={() => setBrand(item.title)}
-            />
-          </Box>
+            <Box>
+              <img
+                src={item.img}
+                width={200}
+                onClick={() => setBrand(item.title)}
+              />
+            </Box>
+          </Grid>
         ))}
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      </Grid>
+      <Grid item>
+        <Button
+          sx={{
+            fontFamily: 'Rubik',
+            background: 'black',
+            borderRadius: 2,
+            color: 'white',
+            width: 200,
+            fontWeight: 'bold',
+            mt: 1,
+            ':hover': {
+              background: 'black',
+              color: 'lime',
+            },
+          }}
+          onClick={() => setBrand('showAll')}
+        >
+          Show all
+        </Button>
+      </Grid>
+      <Grid container sx={{ justifyContent: 'center' }}>
         {prodList.map((item) => (
-          <Box
+          <Grid
+            item
             sx={{
+              background:'white',
               border: 2,
               borderRadius: 3,
               p: 1,
               m: 1,
             }}
           >
-            {item.title}
-            <br />
+            <Typography sx={{ fontWeight: 'bold', width: 225 }}>
+              {item.title}
+            </Typography>
             <img
               src={item.img}
               width={100}
               height={100}
               style={{ objectFit: 'cover' }}
             />
-            <br />
+            <div style={{ padding: 3 }}>{`$${item.price}.00`}</div>
             <Button
               variant="contained"
               sx={{
@@ -81,9 +104,9 @@ function Categories() {
             >
               <AddShoppingCartIcon />
             </Button>
-          </Box>
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </>
   );
 }

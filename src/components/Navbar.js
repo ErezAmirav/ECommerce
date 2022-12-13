@@ -31,7 +31,7 @@ function Navbar() {
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, fontFamily: 'Rubik' }}
+          sx={{ flexGrow: 1, fontWeight: 'bold' }}
         >
           ECommerce
         </Typography>
@@ -40,7 +40,7 @@ function Navbar() {
             href="/"
             color="inherit"
             sx={{
-              fontFamily: 'Rubik',
+              fontWeight: 'bold',
               ':hover': {
                 color: 'lime',
               },
@@ -52,7 +52,7 @@ function Navbar() {
             href="/categories"
             color="inherit"
             sx={{
-              fontFamily: 'Rubik',
+              fontWeight: 'bold',
               ':hover': {
                 color: 'lime',
               },
@@ -64,7 +64,7 @@ function Navbar() {
             href="/contact"
             color="inherit"
             sx={{
-              fontFamily: 'Rubik',
+              fontWeight: 'bold',
               ':hover': {
                 color: 'lime',
               },
@@ -76,7 +76,7 @@ function Navbar() {
             href="/about"
             color="inherit"
             sx={{
-              fontFamily: 'Rubik',
+              fontWeight: 'bold',
               ':hover': {
                 color: 'lime',
               },
@@ -88,7 +88,7 @@ function Navbar() {
             href="/cart"
             color="inherit"
             sx={{
-              fontFamily: 'Rubik',
+              fontWeight: 'bold',
               ':hover': {
                 color: 'lime',
               },
