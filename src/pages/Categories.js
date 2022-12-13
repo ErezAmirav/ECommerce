@@ -3,13 +3,16 @@ import Title from '../components/Title';
 import { categories } from '../data';
 import { products } from '../data';
 import { Box } from '@mui/system';
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Tooltip, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
+import CloseIcon from '@mui/icons-material/Close';
 
 function Categories() {
   const [brand, setBrand] = useState('showAll');
   const [prodList, setProdList] = useState([]);
+  const [openPopUp, setOpenPopUp] = useState(false);
+  const [chosenProduct, setChosenProduct] = useState(0);
 
   useEffect(() => {
     brand === 'showAll'
@@ -17,6 +20,12 @@ function Categories() {
       : setProdList(products.filter((product) => product.brand === brand));
   }, [brand]);
 
+  const handleClickOpen = () => {
+    setOpenPopUp(!openPopUp);
+  };
+  const closePopup = () => {
+    setOpenPopUp(false);
+  };
   return (
     <>
       <Title text={'Categories'} />
@@ -79,13 +88,14 @@ function Categories() {
             sx={{
               boxShadow: '0px 0px 5px',
               background: 'white',
-              // border: 2,
               borderRadius: 3,
               p: 1,
               m: 1,
             }}
           >
-            <Typography sx={{ fontWeight: 'bold', width: 225 }}>
+            <Typography
+              sx={{ fontFamily: 'Rubik', fontWeight: 'bold', width: 225 }}
+            >
               {item.title}
             </Typography>
             <img
@@ -95,33 +105,124 @@ function Categories() {
               style={{ objectFit: 'cover' }}
             />
             <div style={{ padding: 3 }}>{`$${item.price}.00`}</div>
-            <Button
-              variant="contained"
-              sx={{
-                background: 'black',
-                ':hover': {
-                  color: 'lime',
+            <Tooltip title="Add To Cart">
+              <Button
+                variant="contained"
+                sx={{
                   background: 'black',
-                },
-              }}
-            >
-              <AddShoppingCartIcon />
-            </Button>
-            <Button
-              variant="contained"
-              sx={{
-                background: 'black',
-                ml: 1,
-                ':hover': {
-                  color: 'lime',
+                  ':hover': {
+                    color: 'lime',
+                    background: 'black',
+                  },
+                }}
+              >
+                <AddShoppingCartIcon />
+              </Button>
+            </Tooltip>
+            <Tooltip title="Full Information">
+              <Button
+                variant="contained"
+                sx={{
                   background: 'black',
-                },
-              }}
-            >
-              <ReadMoreIcon />
-            </Button>
+                  ml: 1,
+                  ':hover': {
+                    color: 'lime',
+                    background: 'black',
+                  },
+                }}
+                onClick={() => {
+                  handleClickOpen();
+                  setChosenProduct(item.id);
+                }}
+              >
+                <ReadMoreIcon />
+              </Button>
+            </Tooltip>
           </Grid>
         ))}
+        <Box>
+          {openPopUp ? (
+            <Box
+              sx={{
+                backgroundColor: 'rgba(128, 128, 128,0.710)',
+                height: '100%',
+                width: '100%',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+              }}
+            >
+              <Box
+                sx={{
+                  height: '400px',
+                  width: '50%',
+                  backgroundColor: 'white',
+                  position: 'absolute',
+                  top: '25%',
+                  right: '25%',
+                  borderRadius: 3,
+                  p: 2,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    padding: '0 30px 0 15px',
+                    borderBottom: '2px solid black',
+                  }}
+                >
+                  <Title
+                    text={
+                      products.find((product) => product.id === chosenProduct)
+                        .title
+                    }
+                  />
+                  <CloseIcon
+                    sx={{
+                      mt: 2.5,
+                      cursor: 'pointer',
+                      color: 'white',
+                      background: 'black',
+                      borderRadius: 10,
+                    }}
+                    onClick={closePopup}
+                  />
+                </Box>
+                <Box>
+                  <p style={{ textAlign: 'left' }}>
+                    {
+                      products.find((product) => product.id === chosenProduct)
+                        .desc
+                    }
+                  </p>
+                  <img
+                    style={{
+                      width: 200,
+                      height: 200,
+                      objectFit: 'cover',
+                      borderRadius: 8,
+                    }}
+                    src={
+                      products.find((product) => product.id === chosenProduct)
+                        .img
+                    }
+                  />
+                  <p>
+                    Price: ${' '}
+                    {
+                      products.find((product) => product.id === chosenProduct)
+                        .price
+                    }
+                    .00
+                  </p>
+                </Box>
+              </Box>
+            </Box>
+          ) : (
+            ''
+          )}
+        </Box>
       </Grid>
     </>
   );
