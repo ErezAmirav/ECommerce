@@ -1,5 +1,12 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Button,
+  Box,
+} from '@mui/material';
 import StoreIcon from '@mui/icons-material/Store';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Stack } from '@mui/system';
@@ -7,9 +14,8 @@ import { Stack } from '@mui/system';
 function Navbar() {
   return (
     <AppBar
-      position="static"
+      position="sticky"
       sx={{
-        // background: 'linear-gradient(25deg, #0a1e80,#a72ca8)',
         background: 'black',
         mb: 1,
       }}

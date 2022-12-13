@@ -5,6 +5,7 @@ import { products } from '../data';
 import { Box } from '@mui/system';
 import { Button, Grid, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ReadMoreIcon from '@mui/icons-material/ReadMore';
 
 function Categories() {
   const [brand, setBrand] = useState('showAll');
@@ -59,7 +60,8 @@ function Categories() {
             color: 'white',
             width: 200,
             fontWeight: 'bold',
-            mt: 1,
+            mt: 1.5,
+            mb: 1,
             ':hover': {
               background: 'black',
               color: 'lime',
@@ -75,8 +77,9 @@ function Categories() {
           <Grid
             item
             sx={{
-              background:'white',
-              border: 2,
+              boxShadow: '0px 0px 5px',
+              background: 'white',
+              // border: 2,
               borderRadius: 3,
               p: 1,
               m: 1,
@@ -103,6 +106,19 @@ function Categories() {
               }}
             >
               <AddShoppingCartIcon />
+            </Button>
+            <Button
+              variant="contained"
+              sx={{
+                background: 'black',
+                ml: 1,
+                ':hover': {
+                  color: 'lime',
+                  background: 'black',
+                },
+              }}
+            >
+              <ReadMoreIcon />
             </Button>
           </Grid>
         ))}

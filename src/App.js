@@ -6,7 +6,8 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import Cart from './pages/Cart';
-import Categories from './pages/Categories'
+import Categories from './pages/Categories';
+import Footer from './pages/Footer';
 import './App.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Box>
+        <Footer />
       </Router>
     </>
   );
