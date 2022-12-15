@@ -145,16 +145,15 @@ function Categories() {
             <Box
               sx={{
                 backgroundColor: 'rgba(128, 128, 128,0.710)',
-                height: '100%',
-                width: '100%',
-                position: 'absolute',
+                height: '100vh',
+                width: '100vw',
+                position: 'fixed',
                 top: 0,
                 left: 0,
               }}
             >
               <Box
                 sx={{
-                  height: '400px',
                   width: '50%',
                   backgroundColor: 'white',
                   position: 'absolute',
@@ -216,6 +215,39 @@ function Categories() {
                     }
                     .00
                   </p>
+
+                  <Tooltip title="Add To Cart">
+                    <Button
+                      variant="contained"
+                      sx={{
+                        background: 'black',
+                        ':hover': {
+                          color: 'lime',
+                          background: 'black',
+                        },
+                      }}
+                    >
+                      <AddShoppingCartIcon />
+                    </Button>
+                  </Tooltip>
+
+                  <Tooltip title="Go Back">
+                    <Button
+                      variant="contained"
+                      sx={{
+                        background: 'black',
+                        fontFamily: 'Rubik',
+                        ml:1,
+                        ':hover': {
+                          color: 'lime',
+                          background: 'black',
+                        },
+                      }}
+                      onClick={closePopup}
+                    >
+                      Back
+                    </Button>
+                  </Tooltip>
                 </Box>
               </Box>
             </Box>
