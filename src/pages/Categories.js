@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Title from '../components/Title';
 import { categories } from '../data';
 import { products } from '../data';
@@ -7,12 +7,14 @@ import { Button, Grid, Tooltip, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import CloseIcon from '@mui/icons-material/Close';
+import { ShopContext } from '../context/ShoppingContextProvider';
 
 function Categories() {
   const [brand, setBrand] = useState('showAll');
   const [prodList, setProdList] = useState([]);
   const [openPopUp, setOpenPopUp] = useState(false);
   const [chosenProduct, setChosenProduct] = useState(0);
+  const { addToCart, cartItems } = useContext(ShopContext);
 
   useEffect(() => {
     brand === 'showAll'
@@ -26,6 +28,10 @@ function Categories() {
   const closePopup = () => {
     setOpenPopUp(false);
   };
+
+  let cartItemAmount = null;
+
+  console.log(cartItems);
   return (
     <>
       <Title text={'Categories'} />
@@ -110,13 +116,20 @@ function Categories() {
                 variant="contained"
                 sx={{
                   background: 'black',
+                  fontFamily: 'Rubik',
                   ':hover': {
                     color: 'lime',
                     background: 'black',
                   },
                 }}
+                onClick={() => addToCart(item.id)}
               >
                 <AddShoppingCartIcon />
+                {
+                  (cartItemAmount = cartItems[item.id] > 0 && (
+                    <> ({(cartItemAmount = cartItems[item.id])}) </>
+                  ))
+                }
               </Button>
             </Tooltip>
             <Tooltip title="Full Information">
@@ -135,7 +148,7 @@ function Categories() {
                   setChosenProduct(item.id);
                 }}
               >
-                <ReadMoreIcon />
+                <ReadMoreIcon /> {}
               </Button>
             </Tooltip>
           </Grid>
@@ -155,6 +168,7 @@ function Categories() {
               <Box
                 sx={{
                   width: '50%',
+                  boxShadow: '0px 0px 3px',
                   backgroundColor: 'white',
                   position: 'absolute',
                   top: '25%',
@@ -237,7 +251,7 @@ function Categories() {
                       sx={{
                         background: 'black',
                         fontFamily: 'Rubik',
-                        ml:1,
+                        ml: 1,
                         ':hover': {
                           color: 'lime',
                           background: 'black',

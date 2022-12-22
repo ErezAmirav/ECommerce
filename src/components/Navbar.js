@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   AppBar,
   Toolbar,
   IconButton,
   Typography,
   Button,
-  Box,
+  Badge,
 } from '@mui/material';
 import StoreIcon from '@mui/icons-material/Store';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Stack } from '@mui/system';
+import { styled } from '@mui/material/styles';
+import { ShopContext } from '../context/ShoppingContextProvider';
 
 function Navbar() {
+  const { cartItems, getNumOfCartItems } = useContext(ShopContext);
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    '& .MuiBadge-badge': {
+      right: 18,
+      top: 6,
+      background: 'lime',
+      color: 'black',
+      fontFamily: 'Rubik',
+    },
+  }));
+
   return (
     <AppBar
       position="sticky"
@@ -90,18 +104,20 @@ function Navbar() {
           >
             About
           </Button>
-          <Button
-            href="/cart"
-            color="inherit"
-            sx={{
-              fontWeight: 'bold',
-              ':hover': {
-                color: 'lime',
-              },
-            }}
-          >
-            <ShoppingCartIcon sx={{ mr: 2 }} />
-          </Button>
+          <StyledBadge badgeContent={getNumOfCartItems(cartItems)}>
+            <Button
+              href="/cart"
+              color="inherit"
+              sx={{
+                fontWeight: 'bold',
+                ':hover': {
+                  color: 'lime',
+                },
+              }}
+            >
+              <ShoppingCartIcon />
+            </Button>
+          </StyledBadge>
         </Stack>
       </Toolbar>
     </AppBar>

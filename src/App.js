@@ -9,30 +9,33 @@ import Cart from './pages/Cart';
 import Categories from './pages/Categories';
 import Footer from './pages/Footer';
 import './App.css';
+import { ShoppingContextProvider } from './context/ShoppingContextProvider';
 
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Box
-          sx={{
-            textAlign: 'center',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Box>
-        <Footer />
-      </Router>
+      <ShoppingContextProvider>
+        <Router>
+          <Navbar />
+          <Box
+            sx={{
+              textAlign: 'center',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Box>
+          <Footer />
+        </Router>
+      </ShoppingContextProvider>
     </>
   );
 }
