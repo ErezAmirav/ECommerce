@@ -56,7 +56,14 @@ function Categories() {
               background: 'white',
             }}
           >
-            <Box>
+            <Box
+              sx={{
+                transition: '0.5s all ease-in-out',
+                ':hover': {
+                  transform: 'scale(1.1)',
+                },
+              }}
+            >
               <img
                 src={item.img}
                 width={200}
