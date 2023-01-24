@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box } from '@mui/system';
-import { Typography, Button, ButtonGroup, TextField } from '@mui/material';
+import {
+  Typography,
+  Button,
+  ButtonGroup,
+  TextField,
+  Input,
+} from '@mui/material';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
-function CartItem({ props }) {
+import { ShopContext } from '../context/ShoppingContextProvider';
+function CartItem({ props, quantity }) {
+  const { addToCart, removeFromCart, removeAllFromCart, updateCartItemAmount } =
+    useContext(ShopContext);
+
+  console.log('This is props from CartItem.js:');
   console.log(props);
   return (
     <Box
@@ -35,6 +46,7 @@ function CartItem({ props }) {
             sx={{ border: 1 }}
           >
             <Button
+              onClick={() => removeFromCart(props.id)}
               sx={{
                 background: 'black',
                 fontFamily: 'Rubik',
@@ -46,17 +58,22 @@ function CartItem({ props }) {
             >
               -
             </Button>
-            <Typography
+            <Input
+              value={quantity}
+              onChange={(e) =>
+                updateCartItemAmount(Number(e.target.value), props.id)
+              }
               sx={{
                 fontFamily: 'Rubik',
                 fontWeight: 'bold',
                 width: 40,
                 mt: 0.7,
+                textAlign: 'center',
+                input: { textAlign: 'center' },
               }}
-            >
-              0
-            </Typography>
+            />
             <Button
+              onClick={() => addToCart(props.id)}
               sx={{
                 background: 'black',
                 fontFamily: 'Rubik',
@@ -71,6 +88,7 @@ function CartItem({ props }) {
           </ButtonGroup>
         </Box>
         <Button
+          onClick={() => removeAllFromCart(props.id)}
           variant="contained"
           sx={{
             background: 'black',

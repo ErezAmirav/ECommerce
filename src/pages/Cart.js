@@ -1,25 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Title from '../components/Title';
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import { products } from '../data';
 import { Box } from '@mui/system';
 import { ShopContext } from '../context/ShoppingContextProvider';
 import CartItem from './CartItem';
 
 function Cart() {
-  const { cartItems } = useContext(ShopContext);
+  const { cartItems, getNumOfCartItems, getTotalCartAmount } =
+    useContext(ShopContext);
+  const [sumPrice, setSumPrice] = useState(0);
+  let quantity = 0;
+  console.log('This is cartItems from Cart.js:');
   console.log(cartItems);
   return (
     <>
       <Title text="Your Bag" />
+      <Typography>Total Items: {getNumOfCartItems(cartItems)}</Typography>
+      <Typography>Subtotal: ${getTotalCartAmount()}</Typography>
 
       <Box>
         <Grid container sx={{ justifyContent: 'center', display: 'flex' }}>
           {products.map((product, i) => {
+            console.log(cartItems[product.price]);
             if (cartItems[product.id] !== 0) {
+              quantity = cartItems[product.id];
+              // setSumPrice(sumPrice + cartItems[product.price]);
               return (
                 <Grid item key={i}>
-                  <CartItem props={product} />
+                  <CartItem props={product} quantity={quantity} />
                 </Grid>
               );
             }

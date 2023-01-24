@@ -113,7 +113,7 @@ export const products = [
   {
     id: 11,
     img: adidas1,
-    title: 'Adidas Originals Handball Spezial',
+    title: 'Adidas Originals Handball',
     brand: 'Adidas',
     price: 127,
     desc: 'This version is built with a nubuck suede upper for a supple feel. A soft gum rubber outsole keeps them true to their vintage roots.',
