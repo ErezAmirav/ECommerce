@@ -44,9 +44,10 @@ function Categories() {
           background: 'black',
         }}
       >
-        {categories.map((item) => (
+        {categories.map((item, i) => (
           <Grid
             item
+            key={i}
             sx={{
               border: 2,
               borderRadius: 3,
@@ -95,9 +96,10 @@ function Categories() {
         </Button>
       </Grid>
       <Grid container sx={{ justifyContent: 'center' }}>
-        {prodList.map((item) => (
+        {prodList.map((item, i) => (
           <Grid
             item
+            key={i}
             sx={{
               boxShadow: '0px 0px 5px',
               background: 'white',

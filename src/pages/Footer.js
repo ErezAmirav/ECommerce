@@ -1,4 +1,5 @@
-import { Box, Grid, Link } from '@mui/material';
+import { Box, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { Container } from '@mui/system';
 import React from 'react';
 
@@ -18,17 +19,17 @@ function Footer() {
           <Grid item xs={12} sm={4}>
             <Box borderBottom={1}>Help</Box>
             <Box>
-              <Link href="/contact" color="inherit">
+              <Link to="/contact" color="inherit" style={{ color: 'white' }}>
                 Contact
               </Link>
             </Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 Support
               </Link>
             </Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 Privacy Policy
               </Link>
             </Box>
@@ -36,17 +37,17 @@ function Footer() {
           <Grid item xs={12} sm={4}>
             <Box borderBottom={1}>Account</Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 Login
               </Link>
             </Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 Register
               </Link>
             </Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 Privacy Policy
               </Link>
             </Box>
@@ -54,17 +55,17 @@ function Footer() {
           <Grid item xs={12} sm={4}>
             <Box borderBottom={1}>Messages</Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 Backup
               </Link>
             </Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 History
               </Link>
             </Box>
             <Box>
-              <Link href="/" color="inherit">
+              <Link to="/" color="inherit" style={{ color: 'white' }}>
                 Roll
               </Link>
             </Box>

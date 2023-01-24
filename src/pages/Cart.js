@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Title from '../components/Title';
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { products } from '../data';
 import { Box } from '@mui/system';
 import { ShopContext } from '../context/ShoppingContextProvider';
@@ -14,11 +14,17 @@ function Cart() {
       <Title text="Your Bag" />
 
       <Box>
-        {products.map((product) => {
-          if (cartItems[product.id] !== 0) {
-            return <CartItem data={product} />;
-          }
-        })}
+        <Grid container sx={{ justifyContent: 'center', display: 'flex' }}>
+          {products.map((product, i) => {
+            if (cartItems[product.id] !== 0) {
+              return (
+                <Grid item key={i}>
+                  <CartItem props={product} />
+                </Grid>
+              );
+            }
+          })}
+        </Grid>
       </Box>
 
       <Button

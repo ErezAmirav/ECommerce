@@ -12,6 +12,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Stack } from '@mui/system';
 import { styled } from '@mui/material/styles';
 import { ShopContext } from '../context/ShoppingContextProvider';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const { cartItems, getNumOfCartItems } = useContext(ShopContext);
@@ -35,19 +36,20 @@ function Navbar() {
       }}
     >
       <Toolbar>
-        <IconButton
-          href="/"
-          size="large"
-          edge="start"
-          color="inherit"
-          sx={{
-            ':hover': {
-              color: 'lime',
-            },
-          }}
-        >
-          <StoreIcon />
-        </IconButton>
+        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            sx={{
+              ':hover': {
+                color: 'lime',
+              },
+            }}
+          >
+            <StoreIcon />
+          </IconButton>
+        </Link>
         <Typography
           variant="h6"
           component="div"
@@ -56,57 +58,8 @@ function Navbar() {
           ECommerce
         </Typography>
         <Stack direction="row" spacing={2}>
-          <Button
-            href="/"
-            color="inherit"
-            sx={{
-              fontWeight: 'bold',
-              ':hover': {
-                color: 'lime',
-              },
-            }}
-          >
-            Shop
-          </Button>
-          <Button
-            href="/categories"
-            color="inherit"
-            sx={{
-              fontWeight: 'bold',
-              ':hover': {
-                color: 'lime',
-              },
-            }}
-          >
-            Categories
-          </Button>
-          <Button
-            href="/contact"
-            color="inherit"
-            sx={{
-              fontWeight: 'bold',
-              ':hover': {
-                color: 'lime',
-              },
-            }}
-          >
-            Contact
-          </Button>
-          <Button
-            href="/about"
-            color="inherit"
-            sx={{
-              fontWeight: 'bold',
-              ':hover': {
-                color: 'lime',
-              },
-            }}
-          >
-            About
-          </Button>
-          <StyledBadge badgeContent={getNumOfCartItems(cartItems)}>
+          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
             <Button
-              href="/cart"
               color="inherit"
               sx={{
                 fontWeight: 'bold',
@@ -115,9 +68,69 @@ function Navbar() {
                 },
               }}
             >
-              <ShoppingCartIcon />
+              Shop
             </Button>
-          </StyledBadge>
+          </Link>
+          <Link
+            to="/categories"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            <Button
+              color="inherit"
+              sx={{
+                fontWeight: 'bold',
+                ':hover': {
+                  color: 'lime',
+                },
+              }}
+            >
+              Categories
+            </Button>
+          </Link>
+          <Link
+            to="/contact"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            <Button
+              color="inherit"
+              sx={{
+                fontWeight: 'bold',
+                ':hover': {
+                  color: 'lime',
+                },
+              }}
+            >
+              Contact
+            </Button>
+          </Link>
+          <Link to="/about" style={{ textDecoration: 'none', color: 'white' }}>
+            <Button
+              color="inherit"
+              sx={{
+                fontWeight: 'bold',
+                ':hover': {
+                  color: 'lime',
+                },
+              }}
+            >
+              About
+            </Button>
+          </Link>
+          <Link to="/cart" style={{ textDecoration: 'none', color: 'white' }}>
+            <StyledBadge badgeContent={getNumOfCartItems(cartItems)}>
+              <Button
+                color="inherit"
+                sx={{
+                  fontWeight: 'bold',
+                  ':hover': {
+                    color: 'lime',
+                  },
+                }}
+              >
+                <ShoppingCartIcon />
+              </Button>
+            </StyledBadge>
+          </Link>
         </Stack>
       </Toolbar>
     </AppBar>
