@@ -224,7 +224,7 @@ function Categories() {
                   position: 'absolute',
                   top: '25%',
                   right: '25%',
-                  borderRadius: 3,
+                  borderRadius: 1,
                   p: 2,
                 }}
               >
@@ -234,6 +234,7 @@ function Categories() {
                     justifyContent: 'space-between',
                     padding: '0 30px 0 15px',
                     borderBottom: '2px solid black',
+                    mb: 1,
                   }}
                 >
                   <Title
@@ -254,16 +255,19 @@ function Categories() {
                   />
                 </Box>
                 <Box>
-                  <p style={{ textAlign: 'left' }}>
+                  <Typography align="left" sx={{ fontFamily: 'Rubik', ml: 1 }}>
                     {
                       products.find((product) => product.id === chosenProduct)
                         .desc
                     }
-                  </p>
+                  </Typography>
+                  <Divider
+                    sx={{ border: 1, borderColor: 'black', mb: 1, mt: 1 }}
+                  />
                   <img
+                    height={400}
+                    width={'100%'}
                     style={{
-                      width: 200,
-                      height: 200,
                       objectFit: 'cover',
                       borderRadius: 8,
                     }}
@@ -272,14 +276,19 @@ function Categories() {
                         .img
                     }
                   />
-                  <p>
-                    Price: ${' '}
+                  <Divider
+                    sx={{ border: 1, borderColor: 'black', mb: 1, mt: 1 }}
+                  />
+                  <Typography
+                    sx={{ fontFamily: 'Rubik', fontWeight: 'bold', mb: 2 }}
+                  >
+                    Price: $
                     {
                       products.find((product) => product.id === chosenProduct)
                         .price
                     }
                     .00
-                  </p>
+                  </Typography>
                   <Tooltip title="Go Back">
                     <Button
                       variant="contained"
