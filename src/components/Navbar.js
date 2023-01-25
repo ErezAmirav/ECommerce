@@ -68,7 +68,7 @@ function Navbar() {
                 },
               }}
             >
-              Shop
+              Home
             </Button>
           </Link>
           <Link
@@ -84,7 +84,7 @@ function Navbar() {
                 },
               }}
             >
-              Categories
+              Products
             </Button>
           </Link>
           <Link

@@ -1,20 +1,11 @@
 import React, { useContext } from 'react';
 import { Box } from '@mui/system';
-import {
-  Typography,
-  Button,
-  ButtonGroup,
-  TextField,
-  Input,
-} from '@mui/material';
+import { Typography, Button, ButtonGroup, Input, Divider } from '@mui/material';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { ShopContext } from '../context/ShoppingContextProvider';
 function CartItem({ props, quantity }) {
   const { addToCart, removeFromCart, removeAllFromCart, updateCartItemAmount } =
     useContext(ShopContext);
-
-  console.log('This is props from CartItem.js:');
-  console.log(props);
   return (
     <Box
       sx={{
@@ -27,18 +18,44 @@ function CartItem({ props, quantity }) {
         sx={{
           boxShadow: '0px 0px 5px',
           background: 'white',
-          borderRadius: 3,
+          borderRadius: 1,
           p: 1,
           m: 1,
         }}
       >
+        <Box sx={{ justifyContent: 'space-between', display: 'flex' }}>
+          <Typography
+            sx={{
+              fontSize: 14,
+              fontFamily: 'Rubik',
+              fontWeight: 'bold',
+            }}
+          >
+            {props.brand}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: 14,
+              fontFamily: 'Rubik',
+              fontWeight: 'bold',
+            }}
+          >
+            ${props.price}.00
+          </Typography>
+        </Box>
+        <Divider sx={{ border: 1, borderColor: 'black', mb: 1 }} />
+        <img
+          src={props.img}
+          height={100}
+          width={'100%'}
+          style={{ objectFit: 'cover' }}
+        />
+        <Divider sx={{ border: 1, borderColor: 'black', mb: 1, mt: 1 }} />
         <Typography
           sx={{ fontFamily: 'Rubik', fontWeight: 'bold', width: 225 }}
         >
           {props.title}
         </Typography>
-        <img src={props.img} height={100} />
-        <p>Price: ${props.price}</p>
         <Box>
           <ButtonGroup
             variant="contained"

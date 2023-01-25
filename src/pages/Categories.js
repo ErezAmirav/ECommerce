@@ -3,7 +3,7 @@ import Title from '../components/Title';
 import { categories } from '../data';
 import { products } from '../data';
 import { Box } from '@mui/system';
-import { Button, Grid, Tooltip, Typography } from '@mui/material';
+import { Button, Divider, Grid, Tooltip, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import CloseIcon from '@mui/icons-material/Close';
@@ -34,10 +34,10 @@ function Categories() {
   console.log(cartItems);
   return (
     <>
-      <Title text={'Categories'} />
       <Grid
         container
         sx={{
+          mt: -1,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -103,23 +103,65 @@ function Categories() {
             sx={{
               boxShadow: '0px 0px 5px',
               background: 'white',
-              borderRadius: 3,
+              borderRadius: 1,
               p: 1,
               m: 1,
             }}
           >
-            <Typography
-              sx={{ fontFamily: 'Rubik', fontWeight: 'bold', width: 225 }}
-            >
-              {item.title}
-            </Typography>
+            <Box sx={{ justifyContent: 'space-between', display: 'flex' }}>
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  fontFamily: 'Rubik',
+                  fontWeight: 'bold',
+                }}
+              >
+                {item.brand}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  fontFamily: 'Rubik',
+                  fontWeight: 'bold',
+                }}
+              >
+                ${item.price}.00
+              </Typography>
+            </Box>
+            <Divider sx={{ border: 1, borderColor: 'black', mb: 1 }} />
             <img
               src={item.img}
-              width={100}
+              width={'100%'}
               height={100}
               style={{ objectFit: 'cover' }}
             />
-            <div style={{ padding: 3 }}>{`$${item.price}.00`}</div>
+            <Divider sx={{ border: 1, borderColor: 'black', mb: 1, mt: 1 }} />
+            <Typography
+              align="left"
+              sx={{
+                fontFamily: 'Rubik',
+                fontWeight: 'bold',
+                width: 225,
+                fontSize: 15,
+              }}
+            >
+              {item.title}
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: 'Rubik',
+                fontSize: 11,
+                width: 225,
+                mb: 1,
+                textAlign: 'left',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {item.desc}
+            </Typography>
+            <Divider sx={{ border: 1, borderColor: 'black', mb: 1, mt: 1 }} />
             <Tooltip title="Add To Cart">
               <Button
                 variant="contained"
@@ -238,22 +280,6 @@ function Categories() {
                     }
                     .00
                   </p>
-
-                  <Tooltip title="Add To Cart">
-                    <Button
-                      variant="contained"
-                      sx={{
-                        background: 'black',
-                        ':hover': {
-                          color: 'lime',
-                          background: 'black',
-                        },
-                      }}
-                    >
-                      <AddShoppingCartIcon />
-                    </Button>
-                  </Tooltip>
-
                   <Tooltip title="Go Back">
                     <Button
                       variant="contained"

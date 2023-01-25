@@ -1,31 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Title from '../components/Title';
 import { Button, Grid, Typography } from '@mui/material';
 import { products } from '../data';
 import { Box } from '@mui/system';
 import { ShopContext } from '../context/ShoppingContextProvider';
 import CartItem from './CartItem';
+import { Link } from 'react-router-dom';
 
 function Cart() {
   const { cartItems, getNumOfCartItems, getTotalCartAmount } =
     useContext(ShopContext);
-  const [sumPrice, setSumPrice] = useState(0);
   let quantity = 0;
-  console.log('This is cartItems from Cart.js:');
-  console.log(cartItems);
   return (
     <>
       <Title text="Your Bag" />
-      <Typography>Total Items: {getNumOfCartItems(cartItems)}</Typography>
-      <Typography>Subtotal: ${getTotalCartAmount()}</Typography>
 
-      <Box>
+      <Box sx={{ mb: 3 }}>
         <Grid container sx={{ justifyContent: 'center', display: 'flex' }}>
           {products.map((product, i) => {
-            console.log(cartItems[product.price]);
             if (cartItems[product.id] !== 0) {
               quantity = cartItems[product.id];
-              // setSumPrice(sumPrice + cartItems[product.price]);
               return (
                 <Grid item key={i}>
                   <CartItem props={product} quantity={quantity} />
@@ -35,7 +29,11 @@ function Cart() {
           })}
         </Grid>
       </Box>
-
+      <Typography sx={{ fontFamily: 'Rubik', fontWeight: 'bold', mb: 2 }}>
+        Cart Items: {getNumOfCartItems(cartItems)}
+        <br />
+        Subtotal: ${getTotalCartAmount()}
+      </Typography>
       <Button
         variant="contained"
         sx={{
@@ -49,20 +47,22 @@ function Cart() {
       >
         Checkout Now
       </Button>
-      <Button
-        variant="contained"
-        sx={{
-          background: 'black',
-          fontFamily: 'Rubik',
-          ml: 1,
-          ':hover': {
-            color: 'lime',
+      <Link to="/categories">
+        <Button
+          variant="contained"
+          sx={{
             background: 'black',
-          },
-        }}
-      >
-        Continue Shopping
-      </Button>
+            fontFamily: 'Rubik',
+            ml: 1,
+            ':hover': {
+              color: 'lime',
+              background: 'black',
+            },
+          }}
+        >
+          Continue Shopping
+        </Button>
+      </Link>
     </>
   );
 }
