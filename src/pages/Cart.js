@@ -47,7 +47,7 @@ function Cart() {
       >
         Checkout Now
       </Button>
-      <Link to="/categories">
+      <Link to="/ecommerce/categories">
         <Button
           variant="contained"
           sx={{

@@ -36,7 +36,7 @@ function Navbar() {
       }}
     >
       <Toolbar>
-        <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+        <Link to="/ecommerce" style={{ textDecoration: 'none', color: 'white' }}>
           <IconButton
             size="large"
             edge="start"
@@ -58,7 +58,7 @@ function Navbar() {
           ECommerce
         </Typography>
         <Stack direction="row" spacing={2}>
-          <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+          <Link to="/ecommerce" style={{ textDecoration: 'none', color: 'white' }}>
             <Button
               color="inherit"
               sx={{
@@ -72,7 +72,7 @@ function Navbar() {
             </Button>
           </Link>
           <Link
-            to="/categories"
+            to="/ecommerce/categories"
             style={{ textDecoration: 'none', color: 'white' }}
           >
             <Button
@@ -88,7 +88,7 @@ function Navbar() {
             </Button>
           </Link>
           <Link
-            to="/contact"
+            to="/ecommerce/contact"
             style={{ textDecoration: 'none', color: 'white' }}
           >
             <Button
@@ -103,7 +103,7 @@ function Navbar() {
               Contact
             </Button>
           </Link>
-          <Link to="/about" style={{ textDecoration: 'none', color: 'white' }}>
+          <Link to="/ecommerce/about" style={{ textDecoration: 'none', color: 'white' }}>
             <Button
               color="inherit"
               sx={{
@@ -116,7 +116,7 @@ function Navbar() {
               About
             </Button>
           </Link>
-          <Link to="/cart" style={{ textDecoration: 'none', color: 'white' }}>
+          <Link to="/ecommerce/cart" style={{ textDecoration: 'none', color: 'white' }}>
             <StyledBadge badgeContent={getNumOfCartItems(cartItems)}>
               <Button
                 color="inherit"

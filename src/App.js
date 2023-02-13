@@ -25,12 +25,12 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path="/ecommerce" element={<HomePage />} />
+              <Route path="/ecommerce/categories" element={<Categories />} />
+              <Route path="/ecommerce/contact" element={<Contact />} />
+              <Route path="/ecommerce/about" element={<About />} />
+              <Route path="/ecommerce/cart" element={<Cart />} />
+              <Route path="/ecommerce/*" element={<NotFound />} />
             </Routes>
           </Box>
           <Footer />

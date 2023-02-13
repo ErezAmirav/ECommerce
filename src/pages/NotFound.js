@@ -21,7 +21,7 @@ function NotFound() {
         <Typography sx={{ fontFamily: 'Rubik', color: 'white', fontSize: 100 }}>
           You Lost?
         </Typography>
-        <Link to="/">
+        <Link to="/ecommerce">
           <Button
             variant="contained"
             sx={{

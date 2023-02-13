@@ -29,7 +29,7 @@ function HomePage() {
           <br />
           Without Limitations
         </Typography>
-        <Link to="/categories">
+        <Link to="/ecommerce/categories">
           <Button
             variant="contained"
             sx={{
