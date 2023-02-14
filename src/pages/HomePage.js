@@ -23,6 +23,7 @@ function HomePage() {
             textAlign: 'left',
             color: 'white',
             ml: 2,
+            textShadow:'2px 2px 3px black'
           }}
         >
           Discover Limited Sneakers
