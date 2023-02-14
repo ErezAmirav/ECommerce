@@ -27,19 +27,24 @@ const NavDrawer = () => {
   }));
   return (
     <>
-      <StyledBadge badgeContent={getNumOfCartItems(cartItems)}>
-        <Button
-          color="inherit"
-          sx={{
-            fontWeight: 'bold',
-            ':hover': {
-              color: 'lime',
-            },
-          }}
-        >
-          <ShoppingCartIcon />
-        </Button>
-      </StyledBadge>
+      <Link
+        to="/ecommerce/cart"
+        style={{ textDecoration: 'none', color: 'white' }}
+      >
+        <StyledBadge badgeContent={getNumOfCartItems(cartItems)}>
+          <Button
+            color="inherit"
+            sx={{
+              fontWeight: 'bold',
+              ':hover': {
+                color: 'lime',
+              },
+            }}
+          >
+            <ShoppingCartIcon />
+          </Button>
+        </StyledBadge>
+      </Link>
       <Drawer
         anchor="right"
         PaperProps={{
