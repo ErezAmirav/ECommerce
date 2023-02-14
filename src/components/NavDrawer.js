@@ -61,7 +61,7 @@ const NavDrawer = () => {
             to="/ecommerce/"
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            <ListItemButton>
+            <ListItemButton onClick={() => setOpen(false)}>
               <Button
                 color="inherit"
                 sx={{
@@ -79,7 +79,7 @@ const NavDrawer = () => {
             to="/ecommerce/categories"
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            <ListItemButton>
+            <ListItemButton onClick={() => setOpen(false)}>
               <Button
                 color="inherit"
                 sx={{
@@ -97,7 +97,7 @@ const NavDrawer = () => {
             to="/ecommerce/contact"
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            <ListItemButton>
+            <ListItemButton onClick={() => setOpen(false)}>
               <Button
                 color="inherit"
                 sx={{
@@ -115,7 +115,7 @@ const NavDrawer = () => {
             to="/ecommerce/about"
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            <ListItemButton>
+            <ListItemButton onClick={() => setOpen(false)}>
               <Button
                 color="inherit"
                 sx={{
@@ -133,7 +133,7 @@ const NavDrawer = () => {
             to="/ecommerce/cart"
             style={{ textDecoration: 'none', color: 'white' }}
           >
-            <ListItemButton>
+            <ListItemButton onClick={() => setOpen(false)}>
               <Button
                 color="inherit"
                 sx={{
